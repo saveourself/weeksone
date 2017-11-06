@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="wrap">
+        <header class="header">
+            <span>北京市</span>
+            <span><img src="images/pic1.png" alt=""></span>
+            <span><b>搜索</b><b>客服</b></span>
+        </header>
+        <section class="section">
+            <div class="box1">
+               
+            </div>
+            <div class="box2">
+               
+            </div>
+            <div class="box3">
+                    <img src="images/picbig_28.png" alt="">
+            </div>
+                <div class="banners">
+                    <img src="images/bjg_31.png" alt="">
+                </div>
+        </section>
+            <footer class="foot"></footer>
+    </div>
+    <script src="jquery.js"></script>
+    <script>
+        var box1=document.querySelector('.box1');
+        $.ajax({
+            url:'http://localhost:8899/getdata',
+            success:function(data){
+               var obj=JSON.parse(data);
+               obj.forEach(function(val){
+                   var htm=
+                   `
+                    <dl>
+                        <dt><img src="${val.imgs}" alt=""></dt>
+                        <dd>
+                            <h4>${val.h4}</h4>
+                            <h5>${val.h5}</h5>
+                        </dd>
+                    </dl>
+                   `
+                   box1.innerHTML+=htm;
+               })
+            }
+        })
+
+
+    </script>
+</body>
+</html>
